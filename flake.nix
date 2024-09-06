@@ -16,6 +16,8 @@
           neovim
           tmux
           fd
+          lazygit
+          lazydocker
         ];
         shellHook = ''
           tmux new-session -s fish
