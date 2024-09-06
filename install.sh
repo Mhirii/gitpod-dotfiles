@@ -19,7 +19,7 @@ echo "Tmux plugin manager has been cloned."
 
 if [ "$useNix" = true ]; then
   echo "Evaluating the nix dev-shell..."
-  cd "$dotfiles_source" && nix develop "$HOME" || exit 0
+  nix develop || exit 0
   echo "The dev shell was installed successfully"
 else
 
