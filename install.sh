@@ -23,7 +23,7 @@ echo "Tmux plugin manager has been cloned."
 # set useNix in gitpod variables
 if [ "$useNix" = true ]; then
   echo "Evaluating the nix dev-shell..."
-  nix develop
+  nix develop $current_dir
   echo "The dev shell was installed successfully"
 
   nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
