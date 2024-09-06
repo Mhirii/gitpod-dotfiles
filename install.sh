@@ -3,7 +3,7 @@
 useNix=true
 
 current_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-dotfiles_source="${current_dir}/config"
+dotfiles_source="${current_dir}/scripts"
 
 echo "Cloning neovim configuration..."
 git clone https://github.com/mhirii/lazyvim $HOME/.config/nvim
@@ -21,10 +21,10 @@ echo "Tmux plugin manager has been cloned."
 
 if [ "$useNix" = false ]; then
   echo "Installing neovim..."
-  source ./scripts/neovim.sh
+  source "$dotfiles_source"/neovim.sh
   echo "Neovim installation has finished."
 else
   echo "Evaluating the nix dev-shell..."
-  cd ./scripts/ && nix develop || exit 0
+  cd "$dotfiles_source" && nix develop || exit 0
   echo "The dev shell was installed successfully"
 fi
