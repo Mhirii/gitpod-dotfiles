@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# set in gitpod variables [OPTIONAL]
+# useNix=true or false
+# NEOVIM_VERSION
+
 current_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 dotfiles_source="${current_dir}/scripts"
 
@@ -15,9 +19,10 @@ echo "Installing tmux plugin manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Tmux plugin manager has been cloned."
 
+# set useNix in gitpod variables
 if [ "$useNix" = true ]; then
   echo "Evaluating the nix dev-shell..."
-  nix develop || exit 0
+  nix develop
   echo "The dev shell was installed successfully"
 else
 
