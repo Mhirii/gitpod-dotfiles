@@ -5,12 +5,10 @@ dotfiles_source="${current_dir}/scripts"
 
 echo "Cloning neovim configuration..."
 git clone https://github.com/mhirii/lazyvim "$HOME"/.config/nvim
-nvim -c
 echo "Neovim configuration has been cloned."
 
 echo "Cloning tmux configuration..."
 git clone https://github.com/mhirii/tmux "$HOME"/.config/tmux
-nvim -c
 echo "Tmux configuration has been cloned."
 
 echo "Installing tmux plugin manager..."
