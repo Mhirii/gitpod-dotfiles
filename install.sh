@@ -25,10 +25,11 @@ if [ "$useNix" = true ]; then
   echo "Evaluating the nix dev-shell..."
   nix develop
   echo "The dev shell was installed successfully"
-  if [ "$fish_shell" != false ]; then
-    echo " abbr v 'nvim'; abbr lg 'lazygit'; abbr lzd 'lazydocker'; abbr t 'tmux'; abbr tns 'tmux new-session -s'; abbr ta 'tmux attach'; abbr tls 'tmux list-sessions'; abbr tks 'tmux kill-session -t'; " >>"$HOME"/.config/fish/config.fish
-    echo "fish_vi_key_bindings" >"$HOME"/.config/fish/config.fish
-  fi
+
+  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+  nix-channel --update
+  nix-shell '<home-manager>' -A install
+
 else
 
   echo "Installing neovim..."
@@ -45,3 +46,6 @@ else
   cd "$HOME" || exit 0
   echo "Neovim installation has finished."
 fi
+
+echo " abbr v 'nvim'; abbr lg 'lazygit'; abbr lzd 'lazydocker'; abbr t 'tmux'; abbr tns 'tmux new-session -s'; abbr ta 'tmux attach'; abbr tls 'tmux list-sessions'; abbr tks 'tmux kill-session -t'; " >>"$HOME"/.config/fish/config.fish
+echo "fish_vi_key_bindings" >"$HOME"/.config/fish/config.fish
